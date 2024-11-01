@@ -2,6 +2,7 @@ package com.nhnacademy.shoppingmall.common.initialize;
 
 import com.nhnacademy.shoppingmall.common.mvc.controller.BaseController;
 import com.nhnacademy.shoppingmall.common.mvc.controller.ControllerFactory;
+import com.nhnacademy.shoppingmall.common.mvc.transaction.DbConnectionThreadLocal;
 import lombok.extern.slf4j.Slf4j;
 import jakarta.servlet.ServletContainerInitializer;
 import jakarta.servlet.ServletContext;

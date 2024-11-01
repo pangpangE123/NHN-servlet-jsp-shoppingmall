@@ -30,16 +30,15 @@ public class FrontServlet extends HttpServlet {
         controllerFactory = (ControllerFactory) getServletContext().getAttribute(ControllerFactory.CONTEXT_CONTROLLER_FACTORY_NAME);
         //todo#7-2 viewResolver를 초기화 합니다.
         viewResolver = new ViewResolver();
-        getServletContext().setAttribute("viewResolver",viewResolver);
 
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp){
+        DbConnectionThreadLocal.initialize();
 
         try{
             //todo#7-3 Connection pool로 부터 connection 할당 받습니다. connection은 Thread 내에서 공유됩니다.
-            connection = DbConnectionThreadLocal.getConnection();
 
             BaseController baseController = (BaseController) controllerFactory.getController(req);
             String viewName = baseController.execute(req,resp);
