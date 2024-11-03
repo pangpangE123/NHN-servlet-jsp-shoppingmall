@@ -21,7 +21,6 @@ public class UserRepositoryImpl implements UserRepository {
         /*todo#3-1 회원의 아이디와 비밀번호를 이용해서 조회하는 코드 입니다.(로그인)
           해당 코드는 SQL Injection이 발생합니다. SQL Injection이 발생하지 않도록 수정하세요.
          */
-
         Connection connection = DbConnectionThreadLocal.getConnection();
 
         String sql = "select user_id, user_name, user_password, user_birth, user_auth, user_point, created_at, latest_login_at from users where user_id=? and user_password =?";
@@ -47,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
                         rs.getString("user_name"),
                         rs.getString("user_password"),
                         rs.getString("user_birth"),
-                        User.Auth.valueOf(rs.getString("user_auth")),
+                        User.Auth.values()[rs.getInt("user_auth")-1],
                         rs.getInt("user_point"),
                         Objects.nonNull(rs.getTimestamp("created_at")) ? rs.getTimestamp("created_at").toLocalDateTime() : null,
                         Objects.nonNull(rs.getTimestamp("latest_login_at")) ? rs.getTimestamp("latest_login_at").toLocalDateTime() : null
@@ -81,7 +80,7 @@ public class UserRepositoryImpl implements UserRepository {
                         rs.getString("user_name"),
                         rs.getString("user_password"),
                         rs.getString("user_birth"),
-                        User.Auth.valueOf(rs.getString("user_auth")),
+                        User.Auth.values()[rs.getInt("user_auth")-1],
                         rs.getInt("user_point"),
                         Objects.nonNull(rs.getTimestamp("created_at")) ? rs.getTimestamp("created_at").toLocalDateTime() : null,
                         Objects.nonNull(rs.getTimestamp("latest_login_at")) ? rs.getTimestamp("latest_login_at").toLocalDateTime() : null
@@ -109,7 +108,7 @@ public class UserRepositoryImpl implements UserRepository {
             psmt.setString(2, user.getUserName());
             psmt.setString(3, user.getUserPassword());
             psmt.setString(4, user.getUserBirth());
-            psmt.setString(5,user.getUserAuth().toString());
+            psmt.setInt(5,user.getUserAuth().ordinal()+1);
             psmt.setInt(6, user.getUserPoint());
 
 
@@ -162,7 +161,7 @@ public class UserRepositoryImpl implements UserRepository {
             psmt.setString(1, user.getUserName());
             psmt.setString(2, user.getUserPassword());
             psmt.setString(3, user.getUserBirth());
-            psmt.setString(4,user.getUserAuth().toString());
+            psmt.setInt(4,user.getUserAuth().ordinal()+1);
             psmt.setInt(5, user.getUserPoint());
 
 

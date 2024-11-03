@@ -19,10 +19,11 @@ import java.util.Objects;
 @RequestMapping(method = RequestMapping.Method.POST,value = "/loginAction.do")
 public class LoginPostController implements BaseController {
 
-    private final UserService userService = new UserServiceImpl(new UserRepositoryImpl());
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        UserService userService = (UserService) req.getServletContext().getAttribute("userService");
+
         //todo#13-2 로그인 구현, session은 60분동안 유지됩니다.
 
         String userId = req.getParameter("user_id");

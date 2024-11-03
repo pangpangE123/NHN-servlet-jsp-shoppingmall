@@ -11,6 +11,11 @@ public class MyPageController implements BaseController {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+
+        // 배송지 DB에서 사용자 ID로 배송지 목록 받아옴
+
+        // 세션에 해당 정보 추가
+
         return "shop/mypage/mypage";
     }
 }

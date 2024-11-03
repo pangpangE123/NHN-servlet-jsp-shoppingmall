@@ -37,17 +37,12 @@
                         <th>이름</th>
                         <td><%=((User) (request.getSession().getAttribute("USER_TOKEN"))).getUserName() %>
                         </td>
-                        <td>
-                            <a class="btn btn-danger" href="#">수정</a>
-                        </td>
+
                     </tr>
                     <tr>
                         <th>비밀번호</th>
                         <td>
                             비밀번호는 표시되지 않습니다
-                        </td>
-                        <td>
-                            <a class="btn btn-danger" href="#">수정</a>
                         </td>
                     </tr>
                     <tr>
@@ -56,9 +51,6 @@
                                 + ((User) (request.getSession().getAttribute("USER_TOKEN"))).getUserBirth().substring(4, 6) + "월"
                                 + ((User) (request.getSession().getAttribute("USER_TOKEN"))).getUserBirth().substring(6, 8) + "일"
                         %>
-                        </td>
-                        <td>
-                            <a class="btn btn-danger" href="#">수정</a>
                         </td>
                     </tr>
                     <tr>
@@ -71,6 +63,13 @@
                         <td><%=((User) (request.getSession().getAttribute("USER_TOKEN"))).getUserPoint() %>
                         </td>
                     </tr>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3" style="text-align: center;">
+                            <a class="btn btn-warning" href="/mypage/infoupdate.do">내 정보 수정</a>
+                        </td>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -106,6 +105,7 @@
                 <tr>
                     <td colspan="3" style="text-align: center;">
                         <a class="btn btn-success" href="#">배송지 추가</a>
+                        <a class="btn btn-danger" href="#">배송지 삭제</a>
                     </td>
                 </tr>
                 </tfoot>

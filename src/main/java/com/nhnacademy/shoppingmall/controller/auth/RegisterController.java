@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 public class RegisterController implements BaseController {
 
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+
+
         return "shop/register/register_form";
     }
 
