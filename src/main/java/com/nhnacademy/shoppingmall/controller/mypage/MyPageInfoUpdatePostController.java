@@ -28,6 +28,6 @@ public class MyPageInfoUpdatePostController implements BaseController {
 
         userService.updateUser(user);
 
-        return "shop/mypage/mypage";
+        return "redirect:/mypage.do";
     }
 }

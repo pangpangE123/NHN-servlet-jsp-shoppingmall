@@ -38,12 +38,12 @@
                 <label for="user_birth">생년월일</label>
             </div>
 
-<%--            <a>기본 배송지를 등록하세요</a>--%>
-<%--            <div class="form-floating">--%>
-<%--                <input type="text" name="user_address" class="form-control" id="user_address" placeholder="기본 배송지 주소"--%>
-<%--                       required>--%>
-<%--                <label for="user_birth">배송지</label>--%>
-<%--            </div>--%>
+            <a>기본 배송지를 등록하세요</a>
+            <div class="form-floating">
+                <input type="text" name="user_address" class="form-control" id="user_address" placeholder="기본 배송지 주소"
+                       required>
+                <label for="user_birth">배송지</label>
+            </div>
 
             <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign up</button>
 

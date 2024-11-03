@@ -1,5 +1,7 @@
 package com.nhnacademy.shoppingmall.controller.auth;
 
+import com.nhnacademy.shoppingmall.address.domain.Address;
+import com.nhnacademy.shoppingmall.address.service.AddressService;
 import com.nhnacademy.shoppingmall.common.mvc.annotation.RequestMapping;
 import com.nhnacademy.shoppingmall.common.mvc.controller.BaseController;
 import com.nhnacademy.shoppingmall.user.domain.User;
@@ -32,8 +34,13 @@ public class RegisterPostController implements BaseController {
                 userId,userName,userPassword,userBirth,userRole,userPoint,createdAt,lastLoginTime
         );
 
+        Address defaultAddress = new Address(null, req.getParameter("user_address"),userId);
+
         UserService userService = (UserService) req.getServletContext().getAttribute("userService");
         userService.saveUser(user);
+
+        AddressService addressService = (AddressService) req.getServletContext().getAttribute("addressService");
+        addressService.saveAddress(defaultAddress);
 
         log.debug("회원가입 완료");
         return "redirect:/index.do";

@@ -21,6 +21,7 @@ public class LoginController implements BaseController {
             log.debug("이미 로그인 되어있습니다 UserToken : {}",req.getSession().getAttribute("USER_TOKEN"));
             return "redirect:/index.do";
         }
+
         return "shop/login/login_form";
     }
 }

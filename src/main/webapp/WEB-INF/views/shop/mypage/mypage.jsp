@@ -1,4 +1,6 @@
-<%@ page import="com.nhnacademy.shoppingmall.user.domain.User" %><%--
+<%@ page import="com.nhnacademy.shoppingmall.user.domain.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.nhnacademy.shoppingmall.address.domain.Address" %><%--
   Created by IntelliJ IDEA.
   User: pangpange
   Date: 2024. 11. 3.
@@ -11,7 +13,7 @@
         border: 1px solid black;
     }
 
-    .table-container{
+    .table-container {
         margin-bottom: 40px;
     }
 
@@ -77,35 +79,26 @@
         <div class="table-container">
             <h1 class="h3 mb-3 fw-normal">배송지 정보</h1>
             <table>
+                <%for (int i = 0; i < ((List) (request.getSession().getAttribute("userAddresses"))).size(); i++) {%>
                 <tr>
-                    <th>배송지1</th>
-                    <td>경기도 성남시 분당구 불정로 32
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href="#">수정</a>
-                    </td>
+                <th>
+                    <%= "배송지"+(i+1)%>
+                </th>
+                <td>
+                    <%=((List<Address>) (request.getSession().getAttribute("userAddresses"))).get(i).getAddress() %>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="/mypage/deleteaddress.do?id=<%=((List<Address>) (request.getSession().getAttribute("userAddresses")))
+                    .get(i).getAddressId()%>">삭제</a>
+
+                </td>
                 </tr>
-                <tr>
-                    <th>배송지2</th>
-                    <td>전라남도 광주광역시 동구 동명동 113-98
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href="#">수정</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>배송지3</th>
-                    <td>경남 김해시 내동 503-5
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href="#">수정</a>
-                    </td>
-                </tr>
+                <%}%>
+
                 <tfoot>
                 <tr>
                     <td colspan="3" style="text-align: center;">
-                        <a class="btn btn-success" href="#">배송지 추가</a>
-                        <a class="btn btn-danger" href="#">배송지 삭제</a>
+                        <a class="btn btn-success" href="/mypage/addaddress.do">배송지 추가</a>
                     </td>
                 </tr>
                 </tfoot>

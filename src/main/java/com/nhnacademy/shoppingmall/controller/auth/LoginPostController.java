@@ -36,7 +36,7 @@ public class LoginPostController implements BaseController {
            User user =  userService.doLogin(userId,userPassword);
 
            if(Objects.nonNull(user)){
-               HttpSession session =req.getSession();
+               HttpSession session = req.getSession();
                session.setMaxInactiveInterval(3600);
                // 세션에 사용자에 대한 정보 저장
                session.setAttribute("USER_TOKEN",user);
