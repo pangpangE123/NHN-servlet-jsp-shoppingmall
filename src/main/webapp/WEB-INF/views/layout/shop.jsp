@@ -42,7 +42,11 @@
                     <li><a href="/index.do" class="nav-link px-2 text-secondary">Home</a></li>
                     <% if (request.getSession().getAttribute("USER_TOKEN") != null) { %>
                     <li><a href="/mypage.do" class="nav-link px-2 text-white">마이페이지</a></li>
+                        <% if (((User)(request.getSession().getAttribute("USER_TOKEN"))).getUserAuth().equals(User.Auth.ROLE_ADMIN)) { %>
+                        <li><a href="/adminpage.do" class="nav-link px-2 text-white">관리자페이지</a></li>
+                        <%}%>
                     <%}%>
+
                 </ul>
 
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
