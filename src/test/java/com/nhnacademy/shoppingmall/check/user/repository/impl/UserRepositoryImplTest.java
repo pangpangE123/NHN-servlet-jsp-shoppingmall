@@ -121,4 +121,5 @@ class UserRepositoryImplTest {
         int result = userRepository.updateLatestLoginAtByUserId(testUser.getUserId(),LocalDateTime.now());
         Assertions.assertEquals(1,result);
     }
+
 }

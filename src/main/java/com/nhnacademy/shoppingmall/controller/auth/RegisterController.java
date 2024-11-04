@@ -6,18 +6,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-@RequestMapping(method = RequestMapping.Method.GET, value = "/logout.do")
+@RequestMapping(method = RequestMapping.Method.GET, value = "/signup.do")
 @Slf4j
-public class LogoutController implements BaseController {
-    @Override
+public class RegisterController implements BaseController {
+
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
 
-        req.getSession().invalidate();
-        log.debug("로그아웃 완료 : {}",req.getSession().getAttribute("USER_TOKEN"));
-        return "redirect:/index.do";
 
+        return "shop/register/register_form";
     }
-    //todo#13-3 로그아웃 구현
-
 
 }
